@@ -1,0 +1,5 @@
+<form action="{% url 'comparison:compare' 1%}" method="post">
+{% csrf_token %}
+  <input id="title" type="text" name="title">
+  <input type="submit" value="Vote">
+</form>
