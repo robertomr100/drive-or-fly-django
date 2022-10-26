@@ -5,8 +5,10 @@ from django.urls import reverse
 from .models import TripOutput
 from django.http import Http404
 import datetime
-
+from .services import gasApiService
 from .forms import TripForm
+from django.conf import settings
+
 
 
 
@@ -19,6 +21,9 @@ def Index(request):
     context = {'form':form}
 
     return HttpResponse(template.render(context, request))
+
+def autocomplete(request):       
+    return render(request, 'googleMap.html', {'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY})
 
 
 def Result(request, trip_output_id):
@@ -39,10 +44,6 @@ def Result(request, trip_output_id):
 
 
 def Compare(request):
-   # starting_destination = request.POST["starting_destination"]
-    #final_destination = request.POST["final_destination"] 
-    #date_start = request.POST["date_start"]
-    #date_end = request.POST["date_end"]
   # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -72,7 +73,8 @@ def Compare(request):
     duration = date_end_datetime - date_start_datetime
     duration_in_s = duration.total_seconds()  
     hours = divmod(duration_in_s, 3600)[0] 
-    
+    gas_price = gasApiService.getGasPricesByUSState()
+    print(gas_price) 
     tripOutput = TripOutput(flight_cost=hours*10,drive_cost=hours*5,flight_duration=hours,drive_duration=hours*2)
     tripOutput.save()
     #hacer los api calls;

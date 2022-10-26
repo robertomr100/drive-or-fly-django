@@ -130,3 +130,6 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DATE_INPUT_FORMATS = ['%Y-%m-%d']
+
+GOOGLE_MAPS_API_KEY=os.getenv('GOOGLE_MAPS_API_KEY')
+

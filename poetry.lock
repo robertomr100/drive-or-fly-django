@@ -1,4 +1,12 @@
 [[package]]
+name = "amadeus"
+version = "7.0.0"
+description = "Python module for the Amadeus travel APIs"
+category = "main"
+optional = false
+python-versions = ">=3.4.8"
+
+[[package]]
 name = "asgiref"
 version = "3.5.1"
 description = "ASGI specs, helper code, and adapters"
@@ -52,6 +60,17 @@ description = "Pythonic argument parser, that will make you smile"
 category = "main"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "googlemaps"
+version = "4.6.0"
+description = "Python client library for Google Maps Platform"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+requests = ">=2.20.0,<3.0"
 
 [[package]]
 name = "idna"
@@ -137,21 +156,22 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3626132de21be2d08f297aad3e787172e01e8a759518403fb4cd8a70d55d3b01"
+content-hash = "69fec5d8335fafcf6c1274d127232ba6669e7f8aa0fbe7348e8a1c6d42d34d9e"
 
 [metadata.files]
+amadeus = [
+    {file = "amadeus-7.0.0.tar.gz", hash = "sha256:81a3e42aa2fb4cb028af40aa3eb16a16492ee868c759852b0ac2aa030e03ff4b"},
+]
 asgiref = []
 certifi = []
 charset-normalizer = []
 django = []
 docopt = []
+googlemaps = []
 idna = []
 pytz = []
 requests = []
 sqlparse = []
-"stomp.py" = [
-    {file = "stomp.py-8.0.1-py3-none-any.whl", hash = "sha256:69eb189f89a0e843d23d27b030ffb654007bbc57e899ac32183b401c0e0a4623"},
-    {file = "stomp.py-8.0.1.tar.gz", hash = "sha256:d2bc55b4596604feb51d56895d93431ff8ee159b31b28d9038a2310777bbd3fa"},
-]
+"stomp.py" = []
 tdl-client-python = []
 urllib3 = []
